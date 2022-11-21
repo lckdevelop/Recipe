@@ -13,6 +13,10 @@ import KakaoSDKUser
 class KakaoAuthViewModel: ObservableObject {
     var subscription = Set<AnyHashable>()
     
+    init() {
+        print("KakaoAuthViewModel - init() called")
+    }
+    
     func handleKakaoLogin() {
         // 카카오톡 설치 여부 확인
         if (UserApi.isKakaoTalkLoginAvailable()) {
