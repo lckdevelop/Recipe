@@ -40,6 +40,10 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
+## config (API KEY, ETC)
+*.xcconfig
+
+
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
