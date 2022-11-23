@@ -53,6 +53,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6El-Ci-bap" secondAttribute="trailing" id="oVd-b4-e0J"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="kakaoLoginStauts" destination="w1x-l2-8RO" id="JKQ-dN-C5E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

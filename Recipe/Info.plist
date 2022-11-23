@@ -8,7 +8,7 @@
 		<false/>
 	</dict>
 	<key>KAKAO_NATIVE_APP_KEY</key>
-	<string>KAKAO_NATIVE_APP_KEY</string>
+	<string>${KAKAO_NATIVE_APP_KEY}</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

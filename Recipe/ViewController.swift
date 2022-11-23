@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
+    var subscriptions = Set<AnyCancellable>()
+    
+    @IBOutlet weak var kakaoLoginStauts: UILabel!
     
     lazy var loginBtn : UIButton = {
         let loginBtn = UIButton()
@@ -44,35 +48,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        stackView.addArrangedSubview(label)
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//
-//        //stackView.addArrangedSubview(loginBtn)
-//        //stackView.addArrangedSubview(logoutBtn)
-//
-//        self.view.addSubview(stackView)
-//
-//        let safeArea = view.safeAreaLayoutGuide
-//
-//        label.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16).isActive = true
+        setBinding()
     }
 
     @IBAction func loginBtnClicked(_ sender: UIButton) {
         print("loginBtn call")
-        kakaoAuthViewModel.handleKakaoLogin()
+        kakaoAuthViewModel.KakaoLogin()
     }
-    
-//    @objc func loginBtnClicked() {
-//
-//    }
     
     @IBAction func logoutBtnClicked(_ sender: UIButton) {
         print("logoutBtn call")
-        kakaoAuthViewModel.handleKakaoLogout()
+        kakaoAuthViewModel.KakaoLogout()
     }
     
-//    @objc func logoutBtnClicked() {
+
+}
+
+extension ViewController {
+    fileprivate func setBinding() {
+//        self.kakaoAuthViewModel.$isLoggedIn.sink { [weak self] isLoggedIn in
+//            guard let self = self else { return }
 //
-//    }
+//            self.kakaoLoginStauts.text = isLoggedIn ? "로그인 상태" : "로그아웃 상태"
+//        }
+//        .store(in: &subscriptions)
+        
+        self.kakaoAuthViewModel.loginStatusInfo
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.text, on: self.kakaoLoginStauts)
+            .store(in: &subscriptions)
+    }
 }
 
